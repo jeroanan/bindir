@@ -1,0 +1,9 @@
+#!/bin/sh
+
+soundinfo=`amixer -c0 sget Master,0 | tail -n1`
+onoff=`echo $soundinfo | cut -d" " -f6 | sed -e "s/\[//" -e "s/\]//"`
+vol=`echo $soundinfo | cut -d" " -f4 | sed -e "s/\[//" -e "s/\]//"`
+
+[ $onoff = off ] && echo V: M
+[ $onoff = off ] || echo V: $vol
+

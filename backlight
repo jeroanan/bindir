@@ -1,0 +1,11 @@
+#!/bin/sh
+
+changed=0
+
+[ "$1" = "" ] || changed=1
+[ "$1" = + ] && xbacklight -inc 10
+[ "$1" = - ] && xbacklight -dec 10
+
+lightlevel=`xbacklight | sed "s/\..*//"`
+echo L: $lightlevel%
+[ $changed = 1 ] && killall -43 dwmblocks
