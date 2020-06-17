@@ -1,0 +1,6 @@
+#!/bin/sh
+
+BATT=/org/freedesktop/UPower/devices/battery_BAT0
+OUTP=`upower -i $BATT`
+LEVEL=`echo "$OUTP" | grep "percentage" | sed "s/ //g" | cut -f2 -d":"`
+echo B: $LEVEL
